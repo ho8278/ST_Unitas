@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ST Unitas</string>
+
+    <string name="api_key">76426a954d7a20f3d98f0191c5c908ad</string>
 </resources>
