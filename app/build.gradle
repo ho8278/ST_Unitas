@@ -45,6 +45,8 @@ dependencies {
     //Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha03'
 
+    //Circular Indicator
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
