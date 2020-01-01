@@ -1,3 +1,14 @@
 package com.hyoungwoong.stunitas.data.model
 
-//data class Image()
+import com.google.gson.annotations.SerializedName
+
+data class Image(@SerializedName("collection")
+                 val collection:String,
+                 @SerializedName("thumbnail_url")
+                 val thumbnailURL:String,
+                 @SerializedName("image_url")
+                 val imageURL:String,
+                 @SerializedName("width")
+                 val width:Int,
+                 @SerializedName("height")
+                 val height:Int)
