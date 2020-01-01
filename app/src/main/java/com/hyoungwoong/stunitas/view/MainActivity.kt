@@ -1,7 +1,8 @@
-package com.hyoungwoong.stunitas
+package com.hyoungwoong.stunitas.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hyoungwoong.stunitas.R
 
 class MainActivity : AppCompatActivity() {
 
