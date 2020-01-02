@@ -47,9 +47,6 @@ dependencies {
     //Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha03'
 
-    //Circular Indicator
-    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
-
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
@@ -68,6 +65,9 @@ dependencies {
     //Rxjava2
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.3.0'
 
 
     testImplementation 'junit:junit:4.12'

@@ -9,6 +9,8 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".view.MainActivity">
@@ -53,8 +55,8 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.github.lzyzsd.circleprogress.CircleProgress
-                android:id="@+id/cp_progress"
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_loading"
                 android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -62,13 +64,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintWidth_percent="0.3"
                 app:layout_constraintDimensionRatio="1:1"
-                app:progress="@{viewmodel.percentage}"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_images"
                 app:bind_items="@{viewmodel.imageList}"
+                android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
