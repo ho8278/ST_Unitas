@@ -14,7 +14,7 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
     val compositeDisposable = CompositeDisposable()
 
     private val _imageList = mutableListOf<Image>()
-
+    private var exSearchText = ""
     fun getImage() {
         if (searchText.value?.isEmpty() ?: true)
             return
@@ -22,9 +22,18 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
         compositeDisposable.add(
             repository.getImages(searchText.value ?: "")
                 .subscribe({
-                    _imageList.addAll(it.images)
+                    if(exSearchText.isEmpty()){
+                        exSearchText = searchText.value ?: ""
+                    }
+                    if(exSearchText == searchText.value)
+                        _imageList.addAll(it.images)
+                    else{
+                        _imageList.clear()
+                        _imageList.addAll(it.images)
+                    }
                     imageList.value = _imageList
                     isLoading.value = false
+                    exSearchText = searchText.value ?: ""
                 }, {
                     TODO("오류 메세지에 맞춰 알림 띄우기")
                 })

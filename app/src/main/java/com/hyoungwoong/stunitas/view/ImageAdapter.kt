@@ -39,11 +39,14 @@ class ImageAdapter(val phoneWidth:Int,val phoneHeight:Int):ListAdapter<Image,Ima
         }
 
     fun setList(list:List<Image>){
-        submitList(list)
+        submitList(list.toMutableList())
+        if(itemCount == 0){
+            submitList(listOf(Image("","","",0,0)))
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
-        if(itemCount == 0)
+        if(itemCount == 1 && getItem(position).imageURL.isEmpty())
             return LIST_EMPTY
         else
             return LIST_NON_EMPTY
@@ -56,7 +59,7 @@ class ImageAdapter(val phoneWidth:Int,val phoneHeight:Int):ListAdapter<Image,Ima
 
     inner class EmptyViewHolder(val binding:ItemEmptyBinding):ViewHolder(binding.root){
         override fun bind(position: Int) {
-
+            Log.e("Adapter","EmptyView")
         }
     }
 

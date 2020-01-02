@@ -2,7 +2,12 @@ package com.hyoungwoong.stunitas.view
 
 import android.graphics.Point
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hyoungwoong.stunitas.ViewModelFactory
 import com.hyoungwoong.stunitas.data.model.Image
 import com.hyoungwoong.stunitas.databinding.ActivityMainBinding
+import com.hyoungwoong.stunitas.util.debounce
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             rvImages.adapter = ImageAdapter(width,height)
             rvImages.addItemDecoration(TopMarginDecorator(20))
         }
-
+        viewModel.searchText.debounce(1000L).observe(this,object:Observer<String>{
+            override fun onChanged(t: String?) {
+                viewModel.getImage()
+            }
+        })
     }
 }
