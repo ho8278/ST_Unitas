@@ -3,6 +3,8 @@ package com.hyoungwoong.stunitas.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hyoungwoong.stunitas.R
 import com.hyoungwoong.stunitas.ViewModelFactory
 import com.hyoungwoong.stunitas.databinding.ActivityMainBinding
@@ -16,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.viewmodel = viewModel
+        with(binding){
+            viewmodel = viewModel
+            rvImages.layoutManager = GridLayoutManager(baseContext,2, RecyclerView.VERTICAL,false)
+            rvImages.adapter = ImageAdapter()
+        }
     }
 }

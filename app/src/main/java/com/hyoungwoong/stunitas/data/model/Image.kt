@@ -1,5 +1,6 @@
 package com.hyoungwoong.stunitas.data.model
 
+import android.graphics.Bitmap
 import com.google.gson.annotations.SerializedName
 
 data class Image(@SerializedName("collection")
@@ -11,4 +12,5 @@ data class Image(@SerializedName("collection")
                  @SerializedName("width")
                  val width:Int,
                  @SerializedName("height")
-                 val height:Int)
+                 val height:Int,
+                 val bitmap:Bitmap? = null)
