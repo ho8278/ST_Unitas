@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable name="viewmodel" type="com.hyoungwoong.stunitas.view.MainViewModel"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -49,17 +54,20 @@
 
         <com.github.lzyzsd.circleprogress.CircleProgress
                 android:id="@+id/cp_progress"
+                android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintWidth_percent="0.3"
                 app:layout_constraintDimensionRatio="1:1"
+                app:circle_progress="@{viewmodel.percentage}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_images"
+                app:items="@{viewmodel.imageList}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
