@@ -43,6 +43,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_start_search"
                         app:srcCompat="@drawable/ic_search"
+                        android:onClick="@{()->viewmodel.getImage()}"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="0.1"
                         android:layout_width="0dp"
@@ -61,13 +62,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintWidth_percent="0.3"
                 app:layout_constraintDimensionRatio="1:1"
-                app:circle_progress="@{viewmodel.percentage}"
+                app:progress="@{viewmodel.percentage}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_images"
-                app:items="@{viewmodel.imageList}"
+                app:bind_items="@{viewmodel.imageList}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

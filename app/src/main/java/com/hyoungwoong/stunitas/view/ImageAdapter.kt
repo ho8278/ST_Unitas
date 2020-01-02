@@ -8,12 +8,11 @@ import com.bumptech.glide.Glide
 import com.hyoungwoong.stunitas.data.model.Image
 import com.hyoungwoong.stunitas.databinding.ItemEmptyBinding
 import com.hyoungwoong.stunitas.databinding.ItemImageBinding
-import kotlin.IllegalArgumentException
 
 class ImageAdapter:RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
     private val LIST_EMPTY = 0
     private val LIST_NON_EMPTY = 1
-    val imageList = mutableListOf(Image("","","",0,0))
+    val imageList = mutableListOf<Image>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         when(viewType){
             LIST_EMPTY->{
@@ -31,7 +30,7 @@ class ImageAdapter:RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
     override fun getItemCount(): Int = imageList.size
 
     override fun getItemViewType(position: Int): Int {
-        if(imageList.size == 1)
+        if(imageList.size == 1 && imageList[position].thumbnailURL.isEmpty())
             return LIST_EMPTY
         else
             return LIST_NON_EMPTY
