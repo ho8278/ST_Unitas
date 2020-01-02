@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             val height = point.y
             rvImages.layoutManager = LinearLayoutManager(baseContext)
             rvImages.adapter = ImageAdapter(width,height)
+            rvImages.addItemDecoration(TopMarginDecorator(20))
         }
 
     }
