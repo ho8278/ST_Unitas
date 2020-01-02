@@ -71,9 +71,15 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
 
+        <include
+                android:id="@+id/include_empty"
+                android:visibility="@{viewmodel.isEmpty ? View.VISIBLE : View.GONE}"
+                layout="@layout/include_layout_empty"/>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_images"
                 app:bind_items="@{viewmodel.imageList}"
+                android:visibility="@{viewmodel.isEmpty ? View.GONE : View.VISIBLE}"
                 tools:listitem="@layout/item_image"
                 android:overScrollMode="never"
                 android:layout_width="match_parent"

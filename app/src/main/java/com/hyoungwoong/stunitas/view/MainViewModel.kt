@@ -10,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 class MainViewModel(private val repository: DataSource) : ViewModel() {
     val searchText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>(false)
+    val isEmpty = MutableLiveData<Boolean>(false)
     val imageList = MutableLiveData<MutableList<Image>>()
     val compositeDisposable = CompositeDisposable()
 
@@ -33,6 +34,10 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
                     }
                     imageList.value = _imageList
                     isLoading.value = false
+                    if(_imageList.isEmpty())
+                        isEmpty.value = true
+                    else
+                        isEmpty.value = false
                     exSearchText = searchText.value ?: ""
                 }, {
                     TODO("오류 메세지에 맞춰 알림 띄우기")
