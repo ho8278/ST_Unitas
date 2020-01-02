@@ -34,6 +34,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_search"
                         tools:text="TESTTEST"
+                        android:text="@={viewmodel.searchText}"
                         android:lines="1"
                         android:inputType="text"
                         android:imeOptions="actionSearch"
@@ -73,6 +74,7 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_images"
                 app:bind_items="@{viewmodel.imageList}"
+                tools:listitem="@layout/item_image"
                 android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

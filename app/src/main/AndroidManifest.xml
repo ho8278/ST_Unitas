@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.hyoungwoong.stunitas">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:name=".view.AppInitialize"
             android:allowBackup="true"

@@ -1,10 +1,12 @@
 package com.hyoungwoong.stunitas.view
 
+import android.graphics.Point
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hyoungwoong.stunitas.ViewModelFactory
 import com.hyoungwoong.stunitas.data.model.Image
@@ -24,8 +26,12 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
             lifecycleOwner = this@MainActivity
             viewmodel = viewModel
-            rvImages.layoutManager = GridLayoutManager(baseContext, 2, RecyclerView.VERTICAL, false)
-            rvImages.adapter = ImageAdapter()
+            val point= Point()
+            windowManager.defaultDisplay.getSize(point)
+            val width = point.x
+            val height = point.y
+            rvImages.layoutManager = LinearLayoutManager(baseContext)
+            rvImages.adapter = ImageAdapter(width,height)
         }
 
     }

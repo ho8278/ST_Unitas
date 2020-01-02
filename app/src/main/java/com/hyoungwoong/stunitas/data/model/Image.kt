@@ -12,5 +12,4 @@ data class Image(@SerializedName("collection")
                  @SerializedName("width")
                  val width:Int,
                  @SerializedName("height")
-                 val height:Int,
-                 val bitmap:Bitmap? = null)
+                 val height:Int)
