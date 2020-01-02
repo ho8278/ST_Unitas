@@ -8,14 +8,14 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface ImageSearchAPI {
-    @Headers("Authorization: KakaoAK ${R.string.api_key}")
+    @Headers("Authorization: KakaoAK 76426a954d7a20f3d98f0191c5c908ad")
     @GET("image")
     fun getImages(@Query("query")
                   query:String,
                   @Query("page")
-                  page:Int = 1,
+                  page:Int,
                   @Query("size")
-                  size:Int = 20,
+                  size:Int,
                   @Query("sort")
-                  sort:String = "accuracy"): Single<ImageResponse>
+                  sort:String ): Single<ImageResponse>
 }

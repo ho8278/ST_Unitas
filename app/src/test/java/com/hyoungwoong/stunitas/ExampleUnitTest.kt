@@ -1,5 +1,6 @@
 package com.hyoungwoong.stunitas
 
+import com.hyoungwoong.stunitas.data.DataSourceImpl
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +13,12 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val test = DataSourceImpl()
+        test.getImages("금오공과대학교 컴퓨터")
+            .subscribe({
+                assertNotNull(it.images)
+            },{
+                assertTrue(false)
+            })
     }
 }
