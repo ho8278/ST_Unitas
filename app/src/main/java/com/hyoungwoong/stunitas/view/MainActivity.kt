@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hyoungwoong.stunitas.ViewModelFactory
 import com.hyoungwoong.stunitas.data.model.Image
 import com.hyoungwoong.stunitas.databinding.ActivityMainBinding
@@ -36,10 +37,9 @@ class MainActivity : AppCompatActivity() {
             val point= Point()
             windowManager.defaultDisplay.getSize(point)
             val width = point.x
-            val height = point.y
             rvImages.apply{
                 rvImages.layoutManager = LinearLayoutManager(baseContext)
-                rvImages.adapter = ImageAdapter(width,height)
+                rvImages.adapter = ImageAdapter(Glide.with(this@MainActivity),width)
                 rvImages.addItemDecoration(TopMarginDecorator(20))
                 rvImages.addOnScrollListener(object:RecyclerView.OnScrollListener(){
                     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
