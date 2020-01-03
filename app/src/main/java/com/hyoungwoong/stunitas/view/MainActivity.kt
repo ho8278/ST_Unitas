@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,9 +37,18 @@ class MainActivity : AppCompatActivity() {
             windowManager.defaultDisplay.getSize(point)
             val width = point.x
             val height = point.y
-            rvImages.layoutManager = LinearLayoutManager(baseContext)
-            rvImages.adapter = ImageAdapter(width,height)
-            rvImages.addItemDecoration(TopMarginDecorator(20))
+            rvImages.apply{
+                rvImages.layoutManager = LinearLayoutManager(baseContext)
+                rvImages.adapter = ImageAdapter(width,height)
+                rvImages.addItemDecoration(TopMarginDecorator(20))
+                rvImages.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        if(!recyclerView.canScrollVertically(1)){
+                            viewModel.refresh()
+                        }
+                    }
+                })
+            }
         }
         viewModel.searchText.debounce(1000L).observe(this,object:Observer<String>{
             override fun onChanged(t: String?) {
