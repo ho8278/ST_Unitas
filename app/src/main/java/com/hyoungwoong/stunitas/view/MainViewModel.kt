@@ -1,9 +1,11 @@
 package com.hyoungwoong.stunitas.view
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hyoungwoong.stunitas.data.DataSource
 import com.hyoungwoong.stunitas.data.model.Image
+import com.hyoungwoong.stunitas.util.CustomException
 import io.reactivex.disposables.CompositeDisposable
 
 class MainViewModel(private val repository: DataSource) : ViewModel() {
@@ -13,6 +15,7 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
     val imageList = MutableLiveData<MutableList<Image>>()
     val compositeDisposable = CompositeDisposable()
     var refreshCount = 1
+    val exception = MutableLiveData<String>()
 
     private var noMoreRefresh = false
     private val _imageList = mutableListOf<Image>()
@@ -34,7 +37,8 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
                     isEmpty.value = _imageList.isEmpty()
                     isLoading.value = false
                 }, {
-                    TODO("오류 메세지에 맞춰 알림 띄우기")
+                    exception.value = CustomException.mapException(it)
+                    isLoading.value = false
                 })
         )
     }
@@ -54,7 +58,8 @@ class MainViewModel(private val repository: DataSource) : ViewModel() {
                     imageList.value = _imageList
                     isLoading.value = false
                 }, {
-                    TODO("오류 메세지에 맞춰 알림 띄우기")
+                    exception.value = CustomException.mapException(it)
+                    isLoading.value = false
                 })
         )
     }

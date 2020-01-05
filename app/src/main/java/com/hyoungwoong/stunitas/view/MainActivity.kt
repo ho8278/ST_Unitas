@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
                 })
             }
         }
+        viewModel.exception.observe(this,object:Observer<String>{
+            override fun onChanged(t: String?) {
+                Toast.makeText(baseContext,t,Toast.LENGTH_SHORT).show()
+            }
+        })
         viewModel.searchText.debounce(1000L).observe(this,object:Observer<String>{
             override fun onChanged(t: String?) {
                 viewModel.getImage()
