@@ -5,18 +5,19 @@
         <variable name="viewmodel" type="com.hyoungwoong.stunitas.view.MainViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".view.MainActivity">
+            android:layout_height="match_parent">
+
 
         <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_search_container"
+                app:layout_behavior=".view.ScrollBehavior"
                 app:cardBackgroundColor="@android:color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:cardElevation="2dp"
@@ -36,34 +37,42 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lav_loading"
-                android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintWidth_percent="0.3"
-                app:layout_constraintDimensionRatio="1:1"
-                app:lottie_fileName="loading.json"
-                app:lottie_loop="true"
-                app:lottie_autoPlay="true"
-                android:layout_width="0dp"
-                android:layout_height="0dp"/>
-
-        <include
-                android:id="@+id/include_empty"
-                android:visibility="@{viewmodel.isEmpty ? View.VISIBLE : View.GONE}"
-                layout="@layout/include_layout_empty"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_images"
-                app:bind_items="@{viewmodel.imageList}"
-                android:visibility="@{viewmodel.isEmpty ? View.GONE : View.VISIBLE}"
-                tools:listitem="@layout/item_image"
-                android:overScrollMode="never"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                tools:context=".view.MainActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lav_loading"
+                    android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintWidth_percent="0.3"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:lottie_fileName="loading.json"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"/>
+
+            <include
+                    android:id="@+id/include_empty"
+                    android:visibility="@{viewmodel.isEmpty ? View.VISIBLE : View.GONE}"
+                    layout="@layout/include_layout_empty"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_images"
+                    app:bind_items="@{viewmodel.imageList}"
+                    android:visibility="@{viewmodel.isEmpty ? View.GONE : View.VISIBLE}"
+                    tools:listitem="@layout/item_image"
+                    android:overScrollMode="never"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

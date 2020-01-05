@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
             windowManager.defaultDisplay.getSize(point)
             val width = point.x
             rvImages.apply{
-                rvImages.layoutManager = LinearLayoutManager(baseContext)
-                rvImages.adapter = ImageAdapter(Glide.with(this@MainActivity),width)
-                rvImages.addItemDecoration(TopMarginDecorator(20))
-                rvImages.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+                layoutManager = LinearLayoutManager(baseContext)
+                adapter = ImageAdapter(Glide.with(this@MainActivity),width)
+                addItemDecoration(TopMarginDecorator(20))
+                addOnScrollListener(object:RecyclerView.OnScrollListener(){
                     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                         if(!recyclerView.canScrollVertically(1)){
                             viewModel.refresh()
