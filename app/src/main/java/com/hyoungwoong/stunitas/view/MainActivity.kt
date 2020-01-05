@@ -2,22 +2,16 @@ package com.hyoungwoong.stunitas.view
 
 import android.graphics.Point
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.MotionEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.hyoungwoong.stunitas.AppInitialize
+import com.hyoungwoong.stunitas.TopMarginDecorator
 import com.hyoungwoong.stunitas.ViewModelFactory
-import com.hyoungwoong.stunitas.data.model.Image
 import com.hyoungwoong.stunitas.databinding.ActivityMainBinding
 import com.hyoungwoong.stunitas.util.debounce
 

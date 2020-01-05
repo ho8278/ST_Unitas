@@ -1,8 +1,7 @@
-package com.hyoungwoong.stunitas.view
+package com.hyoungwoong.stunitas
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -1,6 +1,5 @@
 package com.hyoungwoong.stunitas.data.remote
 
-import com.hyoungwoong.stunitas.R
 import com.hyoungwoong.stunitas.data.model.ImageResponse
 import io.reactivex.Single
 import retrofit2.http.GET

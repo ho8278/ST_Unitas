@@ -1,6 +1,5 @@
 package com.hyoungwoong.stunitas.view
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hyoungwoong.stunitas.data.DataSource

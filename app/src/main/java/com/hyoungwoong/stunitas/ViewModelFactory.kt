@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hyoungwoong.stunitas.data.DataSource
 import com.hyoungwoong.stunitas.view.MainViewModel
-import java.lang.IllegalArgumentException
 
 class ViewModelFactory(private val repository:DataSource): ViewModelProvider.NewInstanceFactory(){
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =

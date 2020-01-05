@@ -1,4 +1,4 @@
-package com.hyoungwoong.stunitas.view
+package com.hyoungwoong.stunitas
 
 import android.graphics.Rect
 import androidx.recyclerview.widget.RecyclerView

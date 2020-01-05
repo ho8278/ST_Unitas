@@ -1,4 +1,4 @@
-package com.hyoungwoong.stunitas.view
+package com.hyoungwoong.stunitas
 
 import android.app.Application
 import com.hyoungwoong.stunitas.data.DataSource

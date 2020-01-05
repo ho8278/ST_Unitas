@@ -17,7 +17,7 @@
 
         <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_search_container"
-                app:layout_behavior=".view.ScrollBehavior"
+                app:layout_behavior=".ScrollBehavior"
                 app:cardBackgroundColor="@android:color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:cardElevation="2dp"
